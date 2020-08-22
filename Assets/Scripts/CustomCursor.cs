@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class CustomCursor : MonoBehaviour
 {
+    SpriteRenderer currSprite;
+    public int currTool = -1;
+    Sprite defaultSprite;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
+        currSprite = GetComponent<SpriteRenderer>();
+        defaultSprite = currSprite.sprite;
     }
 
     // Update is called once per frame
@@ -19,9 +25,20 @@ public class CustomCursor : MonoBehaviour
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = cursorPos;
         }
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Fire2"))
         {
-            Application.LoadLevel(Application.loadedLevel);
+            currTool = -1;
+            currSprite.sprite = defaultSprite;
         }
+    }
+
+    public void ChangeIcon(Sprite newCursor)
+    {
+        currSprite.sprite = newCursor;
+    }
+
+    public void ChangeTool(int newTool)
+    {
+        currTool = newTool;
     }
 }

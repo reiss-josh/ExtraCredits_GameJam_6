@@ -7,6 +7,11 @@ public class MainMenu : MonoBehaviour
 {
     public Object playScene;
 
+    void Start()
+    {
+        Cursor.visible = true;
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene(playScene.name);

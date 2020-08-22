@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2967643318698007981}
   - component: {fileID: 2967643318698007979}
   m_Layer: 0
-  m_Name: Torso
+  m_Name: Trso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1c3d2ee4e77baa545b53d38b0d648b0e, type: 3}
+  m_Sprite: {fileID: -5043388717848443739, guid: 7d56854baceb7c24a93ce7099786d538,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0a50f2ed6b77c43a300050ae7a29b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSheet: {fileID: 2800000, guid: 1c3d2ee4e77baa545b53d38b0d648b0e, type: 3}
+  spriteSheet: {fileID: 2800000, guid: 7d56854baceb7c24a93ce7099786d538, type: 3}
 --- !u!61 &2967643318698007979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -317,7 +318,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6f437cc8aeca04344ad3f9d2d56330f5, type: 3}
+  m_Sprite: {fileID: -2934472996855580599, guid: a25590e08395b37478998b3b9e07261b,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -340,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0a50f2ed6b77c43a300050ae7a29b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSheet: {fileID: 2800000, guid: 6f437cc8aeca04344ad3f9d2d56330f5, type: 3}
+  spriteSheet: {fileID: 2800000, guid: a25590e08395b37478998b3b9e07261b, type: 3}
 --- !u!61 &2967643318812651193
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -416,6 +418,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84e7285128ac0d49aa41611b59364e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  robotStopped: 0
+  myCursor: {fileID: 8149998123052359887, guid: 06289299fefc72c49aae98889a0b4d25,
+    type: 3}
+  errors:
+  - STCK
+  - GRMY
+  - DMGD
+  - DRND
+  - SPNT
+  - SPNT
+  names:
+  - 'OILL: '
+  - 'CLEN: '
+  - 'INTG: '
+  - 'ENRG: '
+  - 'AMMO: '
+  - 'FUEL: '
+  fullNames:
+  - Head
+  - Trso
+  - ArmL
+  - ArmR
+  - LegL
+  - LegR
+  - N//A
 --- !u!1 &2967643319208254874
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +523,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2967643319208254872
@@ -511,7 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0a50f2ed6b77c43a300050ae7a29b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSheet: {fileID: 2800000, guid: e49ff6a8170a0ac46a3ac0bab98fba92, type: 3}
+  spriteSheet: {fileID: 2800000, guid: b7026c115c0a1554d822541a9fcbc401, type: 3}
 --- !u!61 &2967643319208254854
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -618,7 +645,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2967643319749835900
@@ -633,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0a50f2ed6b77c43a300050ae7a29b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteSheet: {fileID: 2800000, guid: e49ff6a8170a0ac46a3ac0bab98fba92, type: 3}
+  spriteSheet: {fileID: 2800000, guid: b7026c115c0a1554d822541a9fcbc401, type: 3}
 --- !u!61 &2967643319749835898
 BoxCollider2D:
   m_ObjectHideFlags: 0
