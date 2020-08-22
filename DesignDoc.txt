@@ -1,0 +1,40 @@
+ROBOT REPAIR
+
+Main Menu -> just options, quit, play, high scores (networked?)
+Start game
+* have option to skip tutorial
+* tutorial teaches basics
+-> get given a robot
+-> robot says its problem
+-> can use manual for reference
+-> solve the problem by using the appropriate tool on the appropriate body part
+-> when you think the problem is fixed, hit DONE!!
+
+How does it work?
+* oil can be used to fix parts that are stuck
+* rags can be used to fix parts that are dirty
+* wrench can be used to fix parts that are leaky
+* welder can be used to fix parts that are damaged
+* power cable can be used to fix parts that are low on battery
+* ammo box can be used to fix parts that are.... low on ammo
+
+okay never mind all of that instead:
+* oil pours up to a certain line
+* there are buttons you play simon with
+* there is a battery that moves up and down and you hit stop when it's at the right level
+* there is wavelength, and you turn two knobs to align it
+
+Under the hood, each robot has 5 body parts: head, torso, l/r arm, l/r leg.
+Parts that move (legs, arms, head) have Oil values. keep them high or they get STUCK.
+All parts have CLEAN values. keep them high or they get GRIMY.
+All parts have INTEGRITY values. keep them high or they get DAMAGED.
+All parts have ENERGY values. Keep them high or they get DRAINED.
+
+Weapons have AMMO values. Keep them high or they get SPENT.
+Robots with jetpacks have FUEL values. Keep them high or they get SPENT.
+
+* each round will introduce a new mechanic. at first it's just the welder, then the oil, then the rags, etc
+* at the end of the round, all the robots you repaired go out to fight.
+* each robot goes out - if it was repaired properly, it fights. otherwise, it breaks down.
+* a number of enemies approach and fight your robots. any that make it through deal damage.
+* the game ends if your base ever runs out of health.
