@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//takes a spriteSheet and randomly assigns a sprite therein to the current spriterenderer
 public class SelectRandomSpriteFromSheet : MonoBehaviour
 {
     public Texture2D spriteSheet;

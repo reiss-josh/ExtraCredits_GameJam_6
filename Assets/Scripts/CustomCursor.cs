@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CustomCursor : MonoBehaviour
 {
     SpriteRenderer currSprite;
     public int currTool = -1;
     Sprite defaultSprite;
+    public Sprite[] toolSprites;
 
     // Start is called before the first frame update
     void Start()
@@ -32,13 +35,9 @@ public class CustomCursor : MonoBehaviour
         }
     }
 
-    public void ChangeIcon(Sprite newCursor)
-    {
-        currSprite.sprite = newCursor;
-    }
-
     public void ChangeTool(int newTool)
     {
         currTool = newTool;
+        currSprite.sprite = toolSprites[newTool];
     }
 }
