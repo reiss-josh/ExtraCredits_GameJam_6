@@ -7,12 +7,14 @@ public class RepairCanvasController : MonoBehaviour
     Vector3 timeInactivePos = new Vector3(275, -125, 0),
             dialogueInactivePos = new Vector3(0,290,0),
             readoutInactivePos = new Vector3(205,0,0),
-            toolsInactivePos = new Vector3(-120,0,0);
-    Vector3 timeActivePos = new Vector3(-275,-125,0),
+            toolsInactivePos = new Vector3(-200,0,0),
+            currDayInactivePos = new Vector3(-200,-145,0);
+    Vector3 timeActivePos = new Vector3(-275, -125, 0),
             dialogueActivePos = Vector3.zero,
-            readoutActivePos = new Vector3(-350,0,0),
-            toolsActivePos = new Vector3(250,0,0);
-    RectTransform timeBar, dialogue, readoutScreen, toolsBar;
+            readoutActivePos = new Vector3(-350, 0, 0),
+            toolsActivePos = new Vector3(250, 0, 0),
+            currDayActivePos = new Vector3(250, -145, 0);
+    RectTransform timeBar, dialogue, readoutScreen, toolsBar, currDay;
 
     public float speed = 1000f;
 
@@ -26,6 +28,7 @@ public class RepairCanvasController : MonoBehaviour
         dialogue = GetChildWithName(gameObject, "RobotDialogueHolder").GetComponent<RectTransform>();
         readoutScreen = GetChildWithName(gameObject, "ReadoutHolder").GetComponent<RectTransform>();
         toolsBar = GetChildWithName(gameObject, "ToolsHolder").GetComponent<RectTransform>();
+        currDay = GetChildWithName(gameObject, "CurrDayHolder").GetComponent<RectTransform>();
 
         UpdateUIPositioning(0);
     }
@@ -46,11 +49,13 @@ public class RepairCanvasController : MonoBehaviour
         Vector3 dialogueDest = thisUIisActive ? dialogueActivePos : dialogueInactivePos;
         Vector3 readoutDest = thisUIisActive ? readoutActivePos : readoutInactivePos;
         Vector3 toolsDest = thisUIisActive ? toolsActivePos : toolsInactivePos;
+        Vector3 currDayDest = thisUIisActive ? currDayActivePos : currDayInactivePos;
 
         StartCoroutine(MoveUICoroutine(timeBar, timeDest, speed * Time.deltaTime));
         StartCoroutine(MoveUICoroutine(dialogue, dialogueDest, speed * Time.deltaTime));
         StartCoroutine(MoveUICoroutine(readoutScreen, readoutDest, speed * Time.deltaTime));
         StartCoroutine(MoveUICoroutine(toolsBar, toolsDest, speed * Time.deltaTime));
+        StartCoroutine(MoveUICoroutine(currDay, currDayDest, speed * Time.deltaTime));
     }
 
     GameObject GetChildWithName(GameObject obj, string name)
