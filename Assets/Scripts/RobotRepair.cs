@@ -135,18 +135,12 @@ public class RobotRepair : MonoBehaviour
     string GenerateProblemString()
     {
         string result = "My " + cleanedNames[brokenPart] + " is " + cleanedErrors[brokenAspect];
-        /*string result = "";
-        result += "My ";
-        result += cleanedNames[brokenPart];
-        result += " is ";
-        result += cleanedErrors[brokenAspect];
-        //Debug.Log(result);*/
         return result;
     }
 
     void UseTool(string bodyPart, int toolNum)
     {
-        if (toolNum > -1)
+        if (toolNum > -1 && bodyParts[bodyPart].values[toolNum] > 0)
         {
             bodyParts[bodyPart].values[toolNum] = (bodyParts[bodyPart].values[toolNum] + 1) % 3;
             if (bodyPart != partNames[brokenPart]) status += (bodyParts[bodyPart].values[toolNum] - 2); //if it's not the broken part, update our status
