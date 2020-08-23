@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public event System.Action robotDestroyed;
     public event System.Action<int> updateCanvasses;
     public event System.Action<int, int> updateResultsText;
+    public event System.Action<int> robotCountUpdate;
 
     // Start is called before the first frame update
     void Start()
@@ -43,15 +44,17 @@ public class GameManager : MonoBehaviour
         if (currRobot == null && timer > 0 && currZone == 0)
         {
             currRobot = Instantiate(robotObject, spawnPos, Quaternion.identity, this.transform);
+            
             currRobotScript = currRobot.GetComponent<RobotRepair>();
             currRobotScript.exitEvent += DestroyChild;
             currRobotScript.updateStatus += UpdateResultsForRound;
 
-
             robotCreated();
         }
+
         if (timer <= 0 && currZone == 0) EndRepairZone();
-        if (timer <= 0 && currZone == 1) EndCombatZone();
+        if (timer <= 0 && currZone == 1) EndResultsZone();
+        if (timer <= 0 && currZone == 2) EndCombatZone();
     }
 
     public void UpdateResultsForRound(int status)
@@ -59,7 +62,7 @@ public class GameManager : MonoBehaviour
         int ind = 0;
         if (status < 0) ind = 1;
         mostRecentResults[ind] += 1;
-        Debug.Log(mostRecentResults[ind]);
+        Debug.Log("status updated");
     }
 
     public void DestroyChild()
@@ -83,6 +86,8 @@ public class GameManager : MonoBehaviour
     {
         currZone = 2;
         updateCanvasses(currZone);
+        if(robotCountUpdate != null) robotCountUpdate(mostRecentResults[0]-mostRecentResults[1]);
+        timer = 5f;
     }
 
     void EndCombatZone()
@@ -90,6 +95,7 @@ public class GameManager : MonoBehaviour
         currZone = 0;
         updateCanvasses(currZone);
         timer = TimerMax;
+        if (robotCountUpdate != null) robotCountUpdate(0); //remove when done
         mostRecentResults = new int[] { 0, 0, 0 };
     }
 }

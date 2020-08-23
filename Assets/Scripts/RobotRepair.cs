@@ -140,7 +140,7 @@ public class RobotRepair : MonoBehaviour
 
     void UseTool(string bodyPart, int toolNum)
     {
-        if (toolNum > -1 && bodyParts[bodyPart].values[toolNum] > 0)
+        if (toolNum > -1 && bodyParts[bodyPart].values[toolNum] >= 0)
         {
             bodyParts[bodyPart].values[toolNum] = (bodyParts[bodyPart].values[toolNum] + 1) % 3;
             if (bodyPart != partNames[brokenPart]) status += (bodyParts[bodyPart].values[toolNum] - 2); //if it's not the broken part, update our status
@@ -152,8 +152,9 @@ public class RobotRepair : MonoBehaviour
         robotStopped = false;
         destinationVector = offScreenRight;
         status += DetermineStatus();
-        updateStatus(status);
-        updateDialogue("");
+        if (updateStatus != null) updateStatus(status);
+        else Debug.Log("failed to update status");
+        if (updateDialogue != null) updateDialogue("");
         readout.doneEvent -= UpdateAmDone;
         //Debug.Log(status);
     }

@@ -26,13 +26,14 @@ public class ReadoutScript : MonoBehaviour
 
     public void BroadcastDone()
     {
-        doneEvent();
+        if(doneEvent != null) doneEvent();
     }
 
     public void SubscribeToRobot()
     {
         gameManager.currRobotScript.updateReadout += UpdateStrings;
         gameManager.currRobotScript.updateDialogue += UpdateDialogue;
+        
     }
 
     public void UnsubFromRobot()

@@ -53,11 +53,6 @@ public class ResultsCanvasController : MonoBehaviour
         StartCoroutine(MoveUICoroutine(resultIconsHolderTf, destination, resIconMoveSpeed * Time.deltaTime));
     }
 
-    void UpdateResultsText()
-    {
-
-    }
-
     GameObject GetChildWithName(GameObject obj, string name)
     {
         Transform trans = obj.transform;
