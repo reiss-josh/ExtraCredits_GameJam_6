@@ -47,7 +47,8 @@ MonoBehaviour:
     type: 3}
   currRobotScript: {fileID: 0}
   spawnPos: {x: -25, y: 0, z: 0}
-  TimerMax: 60
+  TimerMax: 30
+  resultsTime: 3
   battleTimerMarks:
   - 10
   - 7.5
@@ -58,3 +59,4 @@ MonoBehaviour:
   mostRecentDamageDealt: 0
   currZone: 0
   maxHealth: 10
+  currWave: 0

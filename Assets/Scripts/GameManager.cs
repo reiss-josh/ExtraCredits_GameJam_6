@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
 
     int DetermineNewestAttack()
     {
-        return currWave;
+        return 1<<currWave;
     }
 
     public void DestroyChild()

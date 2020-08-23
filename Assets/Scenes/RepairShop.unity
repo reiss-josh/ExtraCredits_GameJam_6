@@ -1191,7 +1191,7 @@ PrefabInstance:
     - target: {fileID: 1414635550465768561, guid: 1db1dd87b07970049b64c952eeab3af4,
         type: 3}
       propertyPath: TimerMax
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1414635550465768563, guid: 1db1dd87b07970049b64c952eeab3af4,
         type: 3}
