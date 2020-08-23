@@ -7,7 +7,7 @@ public class RepairCanvasController : MonoBehaviour
     Vector3 timeInactivePos = new Vector3(275, -125, 0),
             dialogueInactivePos = new Vector3(0,290,0),
             readoutInactivePos = new Vector3(205,0,0),
-            toolsInactivePos = new Vector3(-110,0,0);
+            toolsInactivePos = new Vector3(-120,0,0);
     Vector3 timeActivePos = new Vector3(-275,-125,0),
             dialogueActivePos = Vector3.zero,
             readoutActivePos = new Vector3(-350,0,0),
