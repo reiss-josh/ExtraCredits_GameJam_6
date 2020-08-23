@@ -10,6 +10,8 @@ public class BattleOutputManager : MonoBehaviour
     TextMeshProUGUI attackWarning;
     TextMeshProUGUI robotsDead;
     TextMeshProUGUI damageText;
+    TextMeshProUGUI gameOverText;
+    AudioManager audioManager;
     GameManager gameManager;
     private RectTransform gridRect;
     public float speed = 1000f;
@@ -23,6 +25,8 @@ public class BattleOutputManager : MonoBehaviour
         attackWarning = GameObject.Find("AttackWarning").GetComponent<TextMeshProUGUI>();
         robotsDead = GameObject.Find("RobotDeathOutput").GetComponent<TextMeshProUGUI>();
         damageText = GameObject.Find("DamageOutput").GetComponent<TextMeshProUGUI>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        gameOverText = GameObject.Find("GameOverText").GetComponent<TextMeshProUGUI>();
         gridRect = GetComponent<RectTransform>();
 
         robotsAlive.text = "";
@@ -43,9 +47,9 @@ public class BattleOutputManager : MonoBehaviour
         }
     }
 
-    void moveUI (int numRobots)
+    void moveUI (int On)
     {
-        if (numRobots <= 0) StartCoroutine(MoveUICoroutine(gridRect, OffPos, speed * Time.deltaTime));
+        if (On <= 0) StartCoroutine(MoveUICoroutine(gridRect, OffPos, speed * Time.deltaTime));
         else StartCoroutine(MoveUICoroutine(gridRect, OnPos, speed * Time.deltaTime));
     }
 
@@ -53,23 +57,31 @@ public class BattleOutputManager : MonoBehaviour
     {
         if(state == 0)
         {
-            moveUI(5);
-            robotsAlive.text += "YOU HAVE:\n" + gameManager.mostRecentOutput + " ROBOTS.";
+            moveUI(1);
         }
-        else if (state == 1)
+        else if(state == 1)
         {
-            attackWarning.text = "YOU ARE\nATTACKED!";
+            robotsAlive.text += "YOU HAVE:\n" + gameManager.mostRecentOutput + " ROBOTS.";
+            audioManager.playText();
         }
         else if (state == 2)
+        {
+            attackWarning.text = "YOU ARE\nATTACKED!";
+            audioManager.playText(0, 3);
+        }
+        else if (state == 3)
         {
             int deadRobs = gameManager.mostRecentAttack - gameManager.mostRecentDamageDealt;
             killRobots(deadRobs);
             robotsDead.text += deadRobs + " DAMAGE IS BLOCKED BY ROBOTS.";
+            if (deadRobs > 0) audioManager.playRobotDeath();
+            else audioManager.playText();
         }
-        else if (state == 3)
+        else if (state == 4)
         {
-
             damageText.text += gameManager.mostRecentDamageDealt + " DAMAGE IS DEALT TO YOUR FACTORY.";
+            //audioManager.playText();
+            if(gameManager.mostRecentDamageDealt > 0) audioManager.playDamage();
         }
         else
         {
@@ -77,6 +89,12 @@ public class BattleOutputManager : MonoBehaviour
             attackWarning.text = "";
             robotsDead.text = "";
             damageText.text = "";
+
+            if (gameManager.health <= 0)
+            {
+                audioManager.playGameOver();
+                gameOverText.text = "GAME OVER";
+            }
             moveUI(0);
         }
     }

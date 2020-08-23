@@ -27,6 +27,7 @@ public class RobotRepair : MonoBehaviour
 
     //acquired components
     private CustomCursor myCursor;
+    private AudioManager audioManager;
 
     //text events
     public event System.Action<string, string> updateReadout;
@@ -41,18 +42,16 @@ public class RobotRepair : MonoBehaviour
     private static readonly string[] partNames =  { "Head", "Trso", "LegL", "LegR", "ArmL", "ArmR"};
     private static readonly string[] cleanedNames = { "Head", "Torso", "Left Leg", "Right Leg", "Left Arm", "Right Arm" };
     private static readonly string[] cleanedErrors = {"STUCK", "GRIMY", "DAMAGED", "DRAINED", "SPENT", "SPENT" };
-
-    // Start is called before the first frame update
+    
     void Awake()
     {
         GenerateDefaultValues();
         GenerateProblem();
         problemString = GenerateProblemString();
 
-        //get necessary components
-        myCursor = GameObject.Find("Cursor").GetComponent<CustomCursor>();
-
         //add event listeners
+        myCursor = GameObject.Find("Cursor").GetComponent<CustomCursor>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         readout = GameObject.Find("ReadoutHolder").GetComponent<ReadoutScript>();
         readout.doneEvent += UpdateAmDone;
     }
@@ -100,7 +99,11 @@ public class RobotRepair : MonoBehaviour
         if (transform.position == destinationVector)
         {
             if (destinationVector == offScreenRight) exitEvent();
-            else updateDialogue(problemString);
+            else
+            {
+                updateDialogue(problemString);
+                if (problemString != "") audioManager.playText();
+            }
             robotStopped = true;
         }
         transform.position = Vector3.MoveTowards(transform.position, destinationVector, 27.5f * Time.deltaTime);
@@ -144,7 +147,9 @@ public class RobotRepair : MonoBehaviour
         {
             bodyParts[bodyPart].values[toolNum] = (bodyParts[bodyPart].values[toolNum] + 1) % 3;
             if (bodyPart != partNames[brokenPart]) status += (bodyParts[bodyPart].values[toolNum] - 2); //if it's not the broken part, update our status
+            audioManager.playUse();
         }
+        else audioManager.playToolFail();
     }
 
     void UpdateAmDone()

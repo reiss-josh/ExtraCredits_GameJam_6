@@ -14,13 +14,25 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        //SceneManager.LoadScene(playScene.name);
+        StartCoroutine(PlayGameRoutine());
+    }
+
+    public IEnumerator PlayGameRoutine()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Debug.Log("loading Scene");
         SceneManager.LoadScene(1);
+    }
+
+    public IEnumerator QuitGameRoutine()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Debug.Log("quit!");
+        Application.Quit();
     }
 
     public void QuitGame()
     {
-        Debug.Log("quit!");
-        Application.Quit();
+        StartCoroutine(QuitGameRoutine());
     }
 }

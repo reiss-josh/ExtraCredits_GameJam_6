@@ -10,13 +10,15 @@ public class RobotGridPopulator : MonoBehaviour
 
     public float speed = 1000f;
     private RectTransform gridRect;
-    private Vector3 robotGridOffPos = new Vector3(-615, 0, 0), robotGridOnPos = new Vector3(-114f, 0, 0);
+    private Vector3 robotGridOffPos = new Vector3(-1580, 0, 0), robotGridOnPos = new Vector3(-333f, 0, 0);
 
     void Start()
     {
+        PopulateGrid();
         GameObject.Find("BattleOutputPanel").GetComponent<BattleOutputManager>().killRobots += KillRobots;
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         gameManager.robotCountUpdate += UpdateRobotCount;
+        gameManager.battleSystemUpdate += moveUI;
         
         gridRect = GetComponent<RectTransform>();
     }
@@ -29,9 +31,13 @@ public class RobotGridPopulator : MonoBehaviour
         }
         robots.Clear();
         numRobots = newCount;
-        if (numRobots <= 0) StartCoroutine(MoveUICoroutine(gridRect, robotGridOffPos, speed * Time.deltaTime));
-        else StartCoroutine(MoveUICoroutine(gridRect, robotGridOnPos, speed * Time.deltaTime));
         PopulateGrid();
+    }
+
+    void moveUI(int On)
+    {
+        if (On < 0 || On > 3) StartCoroutine(MoveUICoroutine(gridRect, robotGridOffPos, speed * Time.deltaTime));
+        else StartCoroutine(MoveUICoroutine(gridRect, robotGridOnPos, speed * Time.deltaTime));
     }
 
     IEnumerator MoveUICoroutine(RectTransform element, Vector3 target, float step)
