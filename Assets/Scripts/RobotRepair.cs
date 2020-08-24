@@ -24,6 +24,8 @@ public class RobotRepair : MonoBehaviour
     public int status = 0;
     public string problemString;
     private int brokenPart, brokenAspect;
+    //Color goodColor = new Color(255, 255, 255, 0);
+    //Color badColor = new Color(0, 0, 0, 0.5f);
 
     //acquired components
     private CustomCursor myCursor;
@@ -35,6 +37,8 @@ public class RobotRepair : MonoBehaviour
     public event System.Action exitEvent;
     public event System.Action<int> updateStatus;
     private ReadoutScript readout;
+    //private bool NotYetBroadcast = true;
+    //private UnityEngine.UI.Image doneBtnShader;
 
     //strings for the status screen
     private static readonly string[] errors = { "STCK", "GRMY", "DMGD", "DRND", "SPNT", "SPNT" };
@@ -53,8 +57,11 @@ public class RobotRepair : MonoBehaviour
         myCursor = GameObject.Find("Cursor").GetComponent<CustomCursor>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         readout = GameObject.Find("ReadoutHolder").GetComponent<ReadoutScript>();
+        //doneBtnShader = GameObject.Find("DoneShader").GetComponent<UnityEngine.UI.Image>();
+        //doneBtnShader.color = badColor;
         readout.doneEvent += UpdateAmDone;
-        if(updateDialogue != null)updateDialogue("");
+        //readout.doneEvent += playDoneSound;
+        if (updateDialogue != null) updateDialogue("");
     }
 
     // Update is called once per frame
@@ -99,11 +106,17 @@ public class RobotRepair : MonoBehaviour
     {
         if (transform.position == destinationVector)
         {
-            if (destinationVector == offScreenRight) exitEvent();
+            if (destinationVector == offScreenRight)
+            {
+                //readout.doneEvent -= playDoneSound;
+                readout.doneEvent -= UpdateAmDone;
+                exitEvent();
+            }
             else
             {
                 updateDialogue(problemString);
                 if (problemString != "") audioManager.playText();
+                //doneBtnShader.color = goodColor;
             }
             robotStopped = true;
         }
@@ -147,7 +160,7 @@ public class RobotRepair : MonoBehaviour
         if (toolNum > -1 && bodyParts[bodyPart].values[toolNum] >= 0)
         {
             bodyParts[bodyPart].values[toolNum] = (bodyParts[bodyPart].values[toolNum] + 1) % 3;
-            if (bodyPart != partNames[brokenPart]) status += (bodyParts[bodyPart].values[toolNum] - 2); //if it's not the broken part, update our status
+            if (bodyPart != partNames[brokenPart]) status += (bodyParts[bodyPart].values[toolNum]-1); //if it's not the broken part, update our status
             audioManager.playUse();
         }
         else audioManager.playToolFail();
@@ -155,14 +168,29 @@ public class RobotRepair : MonoBehaviour
 
     void UpdateAmDone()
     {
-        robotStopped = false;
-        destinationVector = offScreenRight;
-        status += DetermineStatus();
-        if (updateStatus != null) updateStatus(status);
-        else Debug.Log("failed to update status");
-        if (updateDialogue != null) updateDialogue("");
-        readout.doneEvent -= UpdateAmDone;
+        {
+            robotStopped = false;
+            destinationVector = offScreenRight;
+            status += DetermineStatus();
+            if (updateStatus != null) { updateStatus(status); playDoneSound(); }
+            else Debug.Log("failed to update status");
+            if (updateDialogue != null) updateDialogue("");
+            //NotYetBroadcast = false;
+            
+            //doneBtnShader.color = badColor;
+        }
         //Debug.Log(status);
+    }
+
+    void playDoneSound()
+    {
+        Debug.Log("receiving");
+        //if (NotYetBroadcast)
+        {
+            if (status >= 0) audioManager.playDone();
+            else audioManager.playFail();
+            //NotYetBroadcast = false;
+        }
     }
 
     int DetermineStatus()

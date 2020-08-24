@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip robotDeathSound;
     public AudioClip textSound;
     public AudioClip failUseSound;
+    public AudioClip failDoneSound;
     AudioSource mySource;
     
     void Start()
@@ -22,6 +23,11 @@ public class AudioManager : MonoBehaviour
     public void playDone()
     {
         mySource.PlayOneShot(doneSound);
+    }
+
+    public void playFail()
+    {
+        mySource.PlayOneShot(failDoneSound);
     }
 
     public void playTool()

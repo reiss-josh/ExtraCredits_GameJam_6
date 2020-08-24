@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 987fe31adf74bcc46b514725c926ba1c
+guid: dde7c7dbf2da46f4aab6df7f95f76cca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1733896920467048959
-    second: limbssheet_0
+      213: -8007654273096202781
+    second: limbs_v2_0
   - first:
-      213: -7411059624288707891
-    second: limbssheet_1
+      213: -9006488344224581869
+    second: limbs_v2_1
   - first:
-      213: -6628101392747696207
-    second: limbssheet_2
+      213: -7149824236509123587
+    second: limbs_v2_2
   - first:
-      213: -7745044705377794235
-    second: limbssheet_3
+      213: -6796085318676085603
+    second: limbs_v2_3
   - first:
-      213: 5495388244434576446
-    second: limbssheet_4
+      213: 7349217285615047248
+    second: limbs_v2_4
   - first:
-      213: 7358984830237207382
-    second: limbssheet_5
+      213: -1317006225894477321
+    second: limbs_v2_5
   - first:
-      213: -6100528769826414103
-    second: limbssheet_6
+      213: -5862105581763452231
+    second: limbs_v2_6
   - first:
-      213: -4668842710821504725
-    second: limbssheet_7
+      213: 3213853891171040470
+    second: limbs_v2_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: limbssheet_0
+      name: limbs_v2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff90595001a001810800000000000000
-      internalID: 1733896920467048959
+      spriteID: 3e546ff6dd81fd090800000000000000
+      internalID: -8007654273096202781
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: limbssheet_1
+      name: limbs_v2_1
       rect:
         serializedVersion: 2
         x: 16
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dca18058980a62990800000000000000
-      internalID: -7411059624288707891
+      spriteID: 3173cc0c196820380800000000000000
+      internalID: -9006488344224581869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: limbssheet_2
+      name: limbs_v2_2
       rect:
         serializedVersion: 2
         x: 32
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bf600686e04404a0800000000000000
-      internalID: -6628101392747696207
+      spriteID: dfb25600db8b6cc90800000000000000
+      internalID: -7149824236509123587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: limbssheet_3
+      name: limbs_v2_3
       rect:
         serializedVersion: 2
         x: 48
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 547cf6e10e2148490800000000000000
-      internalID: -7745044705377794235
+      spriteID: d94801de8647fa1a0800000000000000
+      internalID: -6796085318676085603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: limbssheet_4
+      name: limbs_v2_4
       rect:
         serializedVersion: 2
         x: 64
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3461641e7a834c40800000000000000
-      internalID: 5495388244434576446
+      spriteID: 052de36fe2aadf560800000000000000
+      internalID: 7349217285615047248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: limbssheet_5
+      name: limbs_v2_5
       rect:
         serializedVersion: 2
         x: 80
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65be6c9a6bd502660800000000000000
-      internalID: 7358984830237207382
+      spriteID: 7f1f49ab0dd09bde0800000000000000
+      internalID: -1317006225894477321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: limbssheet_6
+      name: limbs_v2_6
       rect:
         serializedVersion: 2
         x: 96
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e12274e761965ba0800000000000000
-      internalID: -6100528769826414103
+      spriteID: 9b2a72b380e95aea0800000000000000
+      internalID: -5862105581763452231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: limbssheet_7
+      name: limbs_v2_7
       rect:
         serializedVersion: 2
         x: 112
@@ -284,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b29ff458a40f43fb0800000000000000
-      internalID: -4668842710821504725
+      spriteID: 6dcb1471617e99c20800000000000000
+      internalID: 3213853891171040470
       vertices: []
       indices: 
       edges: []

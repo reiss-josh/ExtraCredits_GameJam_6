@@ -106,7 +106,8 @@ public class GameManager : MonoBehaviour
 
     int DetermineNewestAttack()
     {
-        return Mathf.Clamp(2*(currWave), 1, 16);
+        return currWave + (int)(currWave/5f) + 1;
+        //return Mathf.Clamp(2*(currWave), 1, 16);
     }
 
     public void DestroyChild()

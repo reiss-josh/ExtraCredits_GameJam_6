@@ -24,8 +24,14 @@ public class ReadoutScript : MonoBehaviour
         Dialogue = GameObject.Find("Dialogue").GetComponent<TextMeshProUGUI>();
     }
 
+    void Update()
+    {
+        if (Input.GetButtonDown("Jump")) BroadcastDone();
+    }
+
     public void BroadcastDone()
     {
+        Debug.Log("broadcasting");
         if(doneEvent != null) doneEvent();
     }
 

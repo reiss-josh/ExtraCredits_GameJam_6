@@ -81,7 +81,8 @@ public class BattleOutputManager : MonoBehaviour
         {
             damageText.text += gameManager.mostRecentDamageDealt + " DAMAGE IS DEALT TO YOUR FACTORY.";
             //audioManager.playText();
-            if(gameManager.mostRecentDamageDealt > 0) audioManager.playDamage();
+            if (gameManager.mostRecentDamageDealt > 0) audioManager.playDamage();
+            else audioManager.playText();
         }
         else
         {

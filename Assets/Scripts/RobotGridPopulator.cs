@@ -63,7 +63,8 @@ public class RobotGridPopulator : MonoBehaviour
         for(int i = 0; i < Mathf.Min(numDeadRobots, robots.Count); i++)
         {
             RectTransform currRobTransform = robots[i].GetComponent<RectTransform>();
-            currRobTransform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+            Destroy(robots[i].GetComponent<Animator>());
+            currRobTransform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
         }
     }
 }

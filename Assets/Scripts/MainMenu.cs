@@ -35,4 +35,9 @@ public class MainMenu : MonoBehaviour
     {
         StartCoroutine(QuitGameRoutine());
     }
+
+    public void OptionsMenu()
+    {
+        GetComponent<AudioSource>().Play();
+    }
 }
