@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4229074845294178454}
   - component: {fileID: 4229074845294178453}
   - component: {fileID: 4229074845771740253}
+  - component: {fileID: 3397040264241779274}
   m_Layer: 8
   m_Name: Cursor
   m_TagString: Untagged
@@ -102,3 +103,22 @@ MonoBehaviour:
   - {fileID: -5921720229368252909, guid: 14fddffaafbd2b8418b4839506c07839, type: 3}
   - {fileID: 57646626559347894, guid: 14fddffaafbd2b8418b4839506c07839, type: 3}
   - {fileID: 622970793744358341, guid: 14fddffaafbd2b8418b4839506c07839, type: 3}
+--- !u!95 &3397040264241779274
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229074845294178452}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 356316d2f91f0334b833c94d3073e0d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

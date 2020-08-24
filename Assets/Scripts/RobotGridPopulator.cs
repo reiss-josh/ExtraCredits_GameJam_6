@@ -36,8 +36,8 @@ public class RobotGridPopulator : MonoBehaviour
 
     void moveUI(int On)
     {
-        if (On < 0 || On > 3) StartCoroutine(MoveUICoroutine(gridRect, robotGridOffPos, speed * Time.deltaTime));
-        else StartCoroutine(MoveUICoroutine(gridRect, robotGridOnPos, speed * Time.deltaTime));
+        if (On > 4 || On < 0) StartCoroutine(MoveUICoroutine(gridRect, robotGridOffPos, speed * Time.deltaTime));
+        else if(On == 0) StartCoroutine(MoveUICoroutine(gridRect, robotGridOnPos, speed * Time.deltaTime));
     }
 
     IEnumerator MoveUICoroutine(RectTransform element, Vector3 target, float step)

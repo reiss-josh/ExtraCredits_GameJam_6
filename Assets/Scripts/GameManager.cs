@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     private void UpdateTimer()
     {
         timer -= Time.deltaTime;
-        timeBar.value = timer / timerMaxArr[0];
+        if(currZone == 0) timeBar.value = timer / timerMaxArr[0];
 
         if (timer <= 0 && currZone == 0) EndRepairZone(); // 0 is repair screen - for end
         else if (timer <= 0 && currZone == 1) EndResultsZone(); //1 is results screen - for end
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
         combatState = -1; //reset combat state
 
         //if (robotCountUpdate != null) robotCountUpdate(0); //remove when done
-        mostRecentResults = new int[] { 0, 0, 0 };
+        mostRecentResults = new int[] { mostRecentOutput-mostRecentAttack, 0};
         currWave++;
         GameObject.Find("CurrDayText").GetComponent<TMPro.TextMeshProUGUI>().text = "CURRENT DAY: " + currWave;
         timer = timerMaxArr[3];

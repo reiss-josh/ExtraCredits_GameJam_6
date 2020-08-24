@@ -54,6 +54,7 @@ public class RobotRepair : MonoBehaviour
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         readout = GameObject.Find("ReadoutHolder").GetComponent<ReadoutScript>();
         readout.doneEvent += UpdateAmDone;
+        if(updateDialogue != null)updateDialogue("");
     }
 
     // Update is called once per frame

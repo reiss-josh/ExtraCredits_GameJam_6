@@ -25,7 +25,7 @@ public class HealthBarManager : MonoBehaviour
 
     void moveUI(int On)
     {
-        if (On < 0 || On > 4) StartCoroutine(MoveUICoroutine(gridRect, OffPos, speed * Time.deltaTime));
-        else StartCoroutine(MoveUICoroutine(gridRect, OnPos, speed * Time.deltaTime));
+        if (On > 4 || On < 0) StartCoroutine(MoveUICoroutine(gridRect, OffPos, speed * Time.deltaTime));
+        else if (On == 0) StartCoroutine(MoveUICoroutine(gridRect, OnPos, speed * Time.deltaTime));
     }
 }
