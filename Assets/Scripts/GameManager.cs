@@ -98,10 +98,9 @@ public class GameManager : MonoBehaviour
 
     public void UpdateResultsForRound(int status)
     {
-        int ind = 0;
-        if (status < 0) ind = 1;
-        mostRecentResults[ind] += 1;
-        Debug.Log("status updated");
+        if (status < 0) mostRecentResults[1] += 1;
+        else mostRecentResults[0] += 1;
+        Debug.Log("status, from manager: " + status);
     }
 
     int DetermineNewestAttack()
@@ -112,6 +111,7 @@ public class GameManager : MonoBehaviour
 
     public void DestroyChild()
     {
+        //if (lastResults == mostRecentResults) UpdateResultsForRound(currRobotScript.status); //sanity check
         currRobotScript.exitEvent -= DestroyChild;
         currRobotScript.updateStatus -= UpdateResultsForRound;
         robotDestroyed();
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
         updateCanvasses(currZone);
         mostRecentOutput = Mathf.Clamp(mostRecentResults[0] - mostRecentResults[1], 0, 99);
         mostRecentAttack = DetermineNewestAttack();
-        mostRecentDamageDealt = Mathf.Clamp(mostRecentAttack - mostRecentOutput, 0, 999);
+        mostRecentDamageDealt = Mathf.Clamp(mostRecentAttack - mostRecentOutput, 0, 99);
         if (robotCountUpdate != null) robotCountUpdate(mostRecentOutput);
         timer = timerMaxArr[3];
     }
@@ -148,8 +148,8 @@ public class GameManager : MonoBehaviour
         battleSystemUpdate(5); //update battle canvas
         combatState = -1; //reset combat state
 
-        //if (robotCountUpdate != null) robotCountUpdate(0); //remove when done
-        mostRecentResults = new int[] { mostRecentOutput-mostRecentAttack, 0};
+        //if (robotCountUpdate != null) robotCountUpdate(0); //remove when done 
+        mostRecentResults = new int[] { Mathf.Clamp(mostRecentOutput-mostRecentAttack, 0, 99), 0};
         currWave++;
         GameObject.Find("CurrDayText").GetComponent<TMPro.TextMeshProUGUI>().text = "CURRENT DAY: " + currWave;
         timer = timerMaxArr[3];

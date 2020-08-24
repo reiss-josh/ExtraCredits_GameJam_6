@@ -37,7 +37,7 @@ public class RobotRepair : MonoBehaviour
     public event System.Action exitEvent;
     public event System.Action<int> updateStatus;
     private ReadoutScript readout;
-    //private bool NotYetBroadcast = true;
+    private bool NotYetBroadcast = true;
     //private UnityEngine.UI.Image doneBtnShader;
 
     //strings for the status screen
@@ -172,10 +172,14 @@ public class RobotRepair : MonoBehaviour
             robotStopped = false;
             destinationVector = offScreenRight;
             status += DetermineStatus();
-            if (updateStatus != null) { updateStatus(status); playDoneSound(); }
+            if (updateStatus != null)
+            {
+                if(NotYetBroadcast) { updateStatus(status); }
+                playDoneSound(); Debug.Log("status, from robot: " + status);
+            }
             else Debug.Log("failed to update status");
             if (updateDialogue != null) updateDialogue("");
-            //NotYetBroadcast = false;
+            NotYetBroadcast = false;
             
             //doneBtnShader.color = badColor;
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthBarManager : MonoBehaviour
 {
-    Vector3 OffPos = new Vector3(0, -800, 0), OnPos = new Vector3(0, -400, 0);
+    Vector3 OffPos = new Vector3(1310, -440, 0), OnPos = new Vector3(685, -440, 0);
     float speed = 1000f;
     RectTransform gridRect;
     // Start is called before the first frame update
